@@ -37,9 +37,11 @@ applicationElement.addEventListener("click", event => {
 			})
 	} else if (event.target.id === "register__submit") {
 		//collect all the details into an object
+		debugger
 		const userObject = {
 			name: document.querySelector("input[name='registerName']").value,
-			email: document.querySelector("input[name='registerEmail']").value
+			email: document.querySelector("input[name='registerEmail']").value,
+			isAdmin:false
 		}
 		registerUser(userObject)
 			.then(dbUserObj => {
