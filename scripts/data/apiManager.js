@@ -45,6 +45,11 @@ export const registerUser = (userObj) => {
 		})
 }
 
+export const getToppings = (snackId) => {
+	return fetch (`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping&_expand=snack`)
+	.then(response => response.json())
+}
+
 
 ///// snack functions
 
