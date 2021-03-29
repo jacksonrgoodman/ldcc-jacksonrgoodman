@@ -8,7 +8,7 @@ import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack
+	getSnacks, getSingleSnack, getToppings
 } from "./data/apiManager.js";
 
 
@@ -37,9 +37,11 @@ applicationElement.addEventListener("click", event => {
 			})
 	} else if (event.target.id === "register__submit") {
 		//collect all the details into an object
+		debugger
 		const userObject = {
 			name: document.querySelector("input[name='registerName']").value,
-			email: document.querySelector("input[name='registerEmail']").value
+			email: document.querySelector("input[name='registerEmail']").value,
+			isAdmin:false
 		}
 		registerUser(userObject)
 			.then(dbUserObj => {
@@ -65,8 +67,13 @@ applicationElement.addEventListener("click", event => {
 	if (event.target.id.startsWith("detailscake")) {
 		const snackId = event.target.id.split("__")[1];
 		getSingleSnack(snackId)
-			.then(response => {
-				showDetails(response);
+			.then(snackObj => {
+				getToppings(snackId)
+				.then (snackToppings =>{
+					console.log(snackToppings);
+					snackToppings
+					showDetails(snackObj, snackToppings);//!!!! SNACK DETAILS
+				})
 			})
 	}
 })
@@ -77,10 +84,10 @@ applicationElement.addEventListener("click", event => {
 		showSnackList();
 	}
 })
-
-const showDetails = (snackObj) => {
+//? SNACK DETAILS
+const showDetails = (snackObj, snackToppings) => {
 	const listElement = document.querySelector("#mainContent");
-	listElement.innerHTML = SnackDetails(snackObj);
+	listElement.innerHTML = SnackDetails(snackObj, snackToppings);
 }
 //end snack listeners
 
@@ -122,7 +129,6 @@ const startLDSnacks = () => {
 	applicationElement.innerHTML += `<div id="mainContent"></div>`;
 	showSnackList();
 	showFooter();
-
 }
 
 checkForUser();

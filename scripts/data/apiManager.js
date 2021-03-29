@@ -45,6 +45,11 @@ export const registerUser = (userObj) => {
 		})
 }
 
+export const getToppings = (snackId) => {
+	return fetch (`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping&_expand=snack`)
+	.then(response => response.json())
+}
+
 
 ///// snack functions
 
@@ -68,6 +73,6 @@ export const getSnacks = () => {
 }
 
 export const getSingleSnack = (snackId) => {
-	return fetch(`${apiURL}/snacks/${snackId}`)
+	return fetch(`${apiURL}/snacks/${snackId}?_expand=type&_expand=season&_expand=inFlavor&_expand=shape`)
 	.then(response => response.json())
 }

@@ -1,4 +1,4 @@
-export const SnackDetails = (snackObject) => {
+export const SnackDetails = (snackObject, snackToppings) => {
 	return `
 	<div class="col">
 		<div class="card shadow-sm" >
@@ -9,13 +9,15 @@ export const SnackDetails = (snackObject) => {
 				 
 				  <div class="container">
 					<div class="row row-cols-2">
-						<div class="col col-details">Type: ${snackObject.typeId}</div>
-						<div class="col col-details">Shape: ${snackObject.shapeId}</div>
-						<div class="col col-details">Flavor: ${snackObject.inFlavorId}</div>
-						<div class="col col-details">Season: ${snackObject.seasonId}</div>
+						<div class="col col-details">Type: ${snackObject.type.name}</div>
+						<div class="col col-details">Shape: ${snackObject.shape.name}</div>
+						<div class="col col-details">Flavor: ${snackObject.inFlavor.name}</div>
+						<div class="col col-details">Season: ${snackObject.season.name}</div>
 					</div>
 					<div class="row row-cols-1">
-						<div class="col col-details">${snackObject.toppings}</div>
+						<div class="col col-details">${snackToppings.map(topping =>{
+							return topping.topping.name
+						}).join(", ")}</div>
 					</div>
 				</div>
 			  	
@@ -31,3 +33,6 @@ export const SnackDetails = (snackObject) => {
 	</div>
 	`
 }
+
+
+//? for each....     .map
