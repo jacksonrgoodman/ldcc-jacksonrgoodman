@@ -46,7 +46,7 @@ export const registerUser = (userObj) => {
 }
 
 export const getToppings = (snackId) => {
-	return fetch (`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping&_expand=snack`)
+	return fetch(`${apiURL}/snackToppings?snackId=${snackId}&_expand=topping&_expand=snack`)
 	.then(response => response.json())
 }
 
@@ -73,6 +73,22 @@ export const getSnacks = () => {
 }
 
 export const getSingleSnack = (snackId) => {
-	return fetch(`${apiURL}/snacks/${snackId}?_expand=type&_expand=season&_expand=inFlavor&_expand=shape`)
+	return fetch(`${apiURL}/snacks/${snackId}?_expand=type&_expand=shape&_expand=inFlavor&_expand=season`)
 	.then(response => response.json())
 }
+
+let toppingsCollection = [];
+
+export const useSnackToppingsCollection = () => {
+	const toppingsCollectionCopy = [...toppingsCollection]
+	return toppingsCollectionCopy;
+}
+
+
+export const getSnackToppings = () => {
+ return fetch (`${apiURL}/toppings`)
+.then (response => response.json())
+.then(parsedResponse => {
+	toppingsCollection = parsedResponse
+	return parsedResponse;
+})}
