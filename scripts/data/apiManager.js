@@ -84,6 +84,10 @@ export const useSnackToppingsCollection = () => {
 	return toppingsCollectionCopy;
 }
 
+export const getSnackSelection =(toppingId) => {
+	return fetch (`${apiURL}/snackToppings?toppingId=${toppingId}&_expand=snack`)
+	.then(response => response.json())
+}
 
 export const getSnackToppings = () => {
  return fetch (`${apiURL}/toppings`)
