@@ -2,13 +2,13 @@ console.log('yum, yum, yum');
 
 import { LoginForm } from "./auth/LoginForm.js";
 import { RegisterForm } from "./auth/RegisterForm.js";
-import { NavBar } from "./nav/NavBar.js";
+import { NavBar, populateToppings, renderToppings } from "./nav/NavBar.js";
 import { SnackList } from "./snacks/SnackList.js";
 import { SnackDetails } from "./snacks/SnackDetails.js";
 import { Footer } from "./nav/Footer.js";
 import {
 	logoutUser, setLoggedInUser, loginUser, registerUser, getLoggedInUser,
-	getSnacks, getSingleSnack, getToppings
+	getSnacks, getSingleSnack, getToppings, getSnackToppings, useSnackToppingsCollection
 } from "./data/apiManager.js";
 
 
@@ -37,11 +37,10 @@ applicationElement.addEventListener("click", event => {
 			})
 	} else if (event.target.id === "register__submit") {
 		//collect all the details into an object
-		debugger
 		const userObject = {
 			name: document.querySelector("input[name='registerName']").value,
 			email: document.querySelector("input[name='registerEmail']").value,
-			isAdmin:false
+			isAdmin: false
 		}
 		registerUser(userObject)
 			.then(dbUserObj => {
@@ -69,11 +68,10 @@ applicationElement.addEventListener("click", event => {
 		getSingleSnack(snackId)
 			.then(snackObj => {
 				getToppings(snackId)
-				.then (snackToppings =>{
-					console.log(snackToppings);
-					snackToppings
-					showDetails(snackObj, snackToppings);//!!!! SNACK DETAILS
-				})
+					.then(snackToppings => {
+						console.log(snackToppings)
+						showDetails(snackObj, snackToppings);
+					})
 			})
 	}
 })
@@ -84,7 +82,14 @@ applicationElement.addEventListener("click", event => {
 		showSnackList();
 	}
 })
-//? SNACK DETAILS
+
+applicationElement.addEventListener("change", event => {
+	event.preventDefault();
+	if (event.target.id === "toppingDropdown") {
+		console.log(event.target.value)
+	}
+})
+
 const showDetails = (snackObj, snackToppings) => {
 	const listElement = document.querySelector("#mainContent");
 	listElement.innerHTML = SnackDetails(snackObj, snackToppings);
@@ -109,13 +114,22 @@ const showLoginRegister = () => {
 }
 
 const showNavBar = () => {
+	const toppingList = useSnackToppingsCollection();
 	applicationElement.innerHTML += NavBar();
+	renderToppings(toppingList);
 }
 
 const showSnackList = () => {
 	getSnacks().then(allSnacks => {
 		const listElement = document.querySelector("#mainContent")
 		listElement.innerHTML = SnackList(allSnacks);
+	})
+}
+
+const showToppingsList = () => {
+	getSnackToppings().then(allToppings =>{
+		const toppingElement = document.querySelector(".toppingDropdown")
+		toppingElement.innerHTML = useSnackToppingsCollection(allToppings);
 	})
 }
 
@@ -129,6 +143,8 @@ const startLDSnacks = () => {
 	applicationElement.innerHTML += `<div id="mainContent"></div>`;
 	showSnackList();
 	showFooter();
+	populateToppings();
+
 }
 
 checkForUser();
