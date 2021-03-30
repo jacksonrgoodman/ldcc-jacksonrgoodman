@@ -131,6 +131,18 @@
       "seasonId": 1,
       "description": "Strawberry-flavored cake with layered creme, coated in white frosting with light blue stripes and purple candy glitter.",
       "toppings": "White icing with light blue stripes and purple glitter."
+    },
+    {
+      "name": "Oatmeal Creme Pies",
+      "snackImg": "https://littledebbie.com/images/snackproducts/products/0c4da16727e6fa41b5457af95c2d9bab.png",
+      "count": 12,
+      "typeId": 3,
+      "shapeId": 4,
+      "inFlavorId": 3,
+      "seasonId": 1,
+      "description": "Each Oatmeal Creme Pie is made with two soft oatmeal cookies and a layer of creme filling in between. The very first snack baked under the Little Debbie brand in 1960. Individually wrapped 12 to a carton.",
+      "toppings": "White Icing",
+      "id": 12
     }
   ],
   "toppings": [
