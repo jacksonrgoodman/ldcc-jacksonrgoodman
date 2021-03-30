@@ -47,8 +47,10 @@ export const NavBar = () => {
 	const addTypeButton = getLoggedInUser().id ? `
 	<nav class="navbar navbar-light"">
 		<div class="container-fluid">
-			<button class="btn btn-outline-primary" type="button">Add A Type</button>
-		
+		${getLoggedInUser().admin
+			?`<button class="btn btn-outline-primary" type="button">Add A Type</button>`
+		:""
+		}
 		</div>
 	</nav>` : ""
 

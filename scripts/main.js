@@ -87,7 +87,6 @@ applicationElement.addEventListener("change", event => {
 	event.preventDefault();
 	if (event.target.id === "toppingDropdown") {
 		console.log(event.target.value);
-		debugger
 		let toppingValue= event.target.value;
 		getSnackSelection(toppingValue)
 		.then (response => {
@@ -114,7 +113,7 @@ const checkForUser = () => {
 	} else {
 		applicationElement.innerHTML = "";
 		//show login/register
-		showNavBar()
+		showLoginNavBar()
 		showLoginRegister();
 	}
 }
@@ -128,6 +127,12 @@ const showNavBar = () => {
 	const toppingList = useSnackToppingsCollection();
 	applicationElement.innerHTML += NavBar();
 	renderToppings(toppingList);
+}
+
+const showLoginNavBar = () => {
+	const toppingList = useSnackToppingsCollection();
+	applicationElement.innerHTML += NavBar();
+	//renderToppings(toppingList);
 }
 
 const showSnackList = () => {
@@ -156,7 +161,7 @@ const startLDSnacks = () => {
 	showSnackList();
 	showFooter();
 	populateToppings();
-
+	
 }
 
 checkForUser();
