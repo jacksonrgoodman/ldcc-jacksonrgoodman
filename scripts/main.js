@@ -69,7 +69,6 @@ applicationElement.addEventListener("click", event => {
 			.then(snackObj => {
 				getToppings(snackId)
 					.then(snackToppings => {
-						console.log(snackToppings)
 						showDetails(snackObj, snackToppings);
 					})
 			})
@@ -86,7 +85,6 @@ applicationElement.addEventListener("click", event => {
 applicationElement.addEventListener("change", event => {
 	event.preventDefault();
 	if (event.target.id === "toppingDropdown") {
-		console.log(event.target.value);
 		let toppingValue= event.target.value;
 		getSnackSelection(toppingValue)
 		.then (response => {
