@@ -1,3 +1,28 @@
+# Little Debbies Sorter
+An NSS Project focusing on event listeners, database managment, and other concepts in javascript.
+
+## Installation
+1. `git clone` this repository
+2. run `serve` in root
+3. `run json-server -p 8088 -w snacks.json` in root/api
+4. go to `http://localhost:5000/src/` and register a username
+
+## Usage
+
+```python
+import foobar
+
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
+
+## Contributing
+Just Me!
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
 ![LDCC](images/ldBracket.jpg)
 # Little Debbie's Collector Club
 
