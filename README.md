@@ -7,16 +7,6 @@ An NSS Project focusing on event listeners, database managment, and other concep
 3. `run json-server -p 8088 -w snacks.json` in root/api
 4. go to `http://localhost:5000/src/` and register a username
 
-## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-
 ## Contributing
 Just Me!
 
