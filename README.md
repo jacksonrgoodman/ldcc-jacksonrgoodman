@@ -1,3 +1,6 @@
+[![JS](https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](#)
+[![HTML 5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)](#)
+[![CSS](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](#)
 # Little Debbies Sorter
 An NSS Project focusing on event listeners, database managment, and other concepts in javascript.
 
@@ -8,7 +11,7 @@ An NSS Project focusing on event listeners, database managment, and other concep
 4. go to `http://localhost:5000/src/` and register a username
 
 ## Contributing
-Just Me!
+[Jackson Goodman](https://www.github.com/jacksonrgoodman/)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
